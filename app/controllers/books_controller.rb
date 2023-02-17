@@ -24,6 +24,7 @@ class BooksController < ApplicationController
     @books = Book.find(params[:id])
     @user = User.find(@books.user_id)
     @book = Book.new
+    @post_comment = PostComment.new
   end
 
   def edit
