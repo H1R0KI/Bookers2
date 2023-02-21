@@ -1,5 +1,5 @@
 <table>
-  <% @books.post_comments.each do |post_comment| %>
+  <% @book.post_comments.each do |post_comment| %>
     <% post_comment_user = post_comment.user %>
     <tr>
     	<td>
@@ -10,12 +10,12 @@
     	</td>
     	<td><%= post_comment.comment %></td>
     	<% if current_user == post_comment_user %>
-      <td><%= link_to 'Destroy', book_post_comments_path(post_comment.book.id, post_comment.id), class: 'btn-sm btn-danger', method: :delete %></td>
+      <td><%= link_to 'Destroy', book_post_comments_path(post_comment.book_id, post_comment.id), class: 'btn-sm btn-danger', method: :delete %></td>
     	<% end %>
     </tr>
   <% end %>
 </table>
-<%= form_with model: [@books,@post_comment], local: true do |f| %>
+<%= form_with model: [@book,@post_comment], local: true do |f| %>
   <%= f.text_area :comment, size:"90x5" %><br>
   <%= f.submit '送信'%>
 <% end %>
